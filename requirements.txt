@@ -1,5 +1,6 @@
 beautifulsoup4==4.4.0
 Flask==0.10.1
+Flask-SQLAlchemy==2.0
 itsdangerous==0.24
 Jinja2==2.8
 markovify==0.2.0
