@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <style type="text/css">
+        <!--
+        body {
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+
+        -->
+    </style>
+
+    <title>Voltar's Vault Thread Simulator</title>
+
+    <link rel="stylesheet" href="http://www.awesomenauts.com/forum/styles/awesome/theme/stylesheet.css"
+          type="text/css">
+
+
+</head>
+<body>
+<div style="width:960px;clear:both;margin: 0 auto;">
+    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+        <tr>
+
+            <td class="np-body" width="100%" valign="top">
+
+                <div id="top_logo">
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                        <tr>
+                            <td height="150" align="center" valign="top"><a href="./index.php"><img
+                                    src="http://www.awesomenauts.com/forum/styles/awesome/imageset/sitelogo.jpg"
+                                    width="960" height="150" alt=""
+                                    title=""><!-- Tapatalk Detect body start -->
+                                <td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div id="wrapcentre">
+
+
+                    <div id="pageheader">
+                        <h2><a class="titles" href="#">Voltar's Vault Thread Simulator </a></h2>
+
+
+                    </div>
+
+                    <br clear="all"><br>
+
+                    <div id="pagecontent">
+                        <div>
+                            <div class="tbl-h-l">
+                                <div class="tbl-h-r">
+                                    <div class="tbl-h-c">
+                                        <div class="tbl-title"><h4></h4></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="tablebg" width="100%" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                <tr>
+                                    <th>Author</th>
+                                    <th>Message</th>
+                                </tr>
+
+                                {% for post in posts %}
+                                <tr>
+
+                                    <td class="row-post-top" align="center" valign="middle">
+                                        <a name="p359213"></a>
+                                        <b class="postauthor">{{ post.username }}</b>
+                                    </td>
+                                    <td class="row-post-top" width="100%">
+                                        <table width="100%" cellspacing="0">
+                                            <tbody>
+                                            <tr>
+
+                                                <td class="gensmall" width="100%">
+                                                    <div style="float:left;">&nbsp;<b>Post subject:</b> Voltar's vaaaaault
+                                                    </div>
+                                                    <div style="float:right;">&nbsp;<b>Posted:</b>
+                                                         Maybe in another reality...&nbsp;</div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="row-post-body" valign="top">
+                                        <table cellspacing="4" align="center" width="150">
+
+                                        </table>
+
+
+                                    </td>
+                                    <td class="row-post-body" valign="top">
+                                        <table width="100%" cellspacing="5">
+                                            <tbody>
+                                            <tr>
+                                                <td>
+
+
+                                                    <div class="postbody"
+                                                         style="max-width: 764px; word-wrap: break-word;">
+                                                        {{ post.text }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="row-post-bottom" align="center"><a href="#"><img src="http://www.awesomenauts.com/forum//styles/awesome/imageset/arrow_up.gif" alt="Top" title="Top"></a>&nbsp;<a href="#"><img src="http://www.awesomenauts.com/forum//styles/awesome/imageset/arrow_down.gif" alt="" title=""></a></td>
+                                    <td class="row-post-bottom"><div class="gensmall" style="float:left;">&nbsp;<a href="#"><img src="http://www.awesomenauts.com/forum//styles/awesome/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile"></a> <a href="#"><img src="http://www.awesomenauts.com/forum//styles/awesome/imageset/en/icon_contact_pm.gif" alt="Send private message" title="Send private message"></a> &nbsp;</div> <div class="gensmall" style="float: right;"><a href="#"><img src="http://www.awesomenauts.com/forum//styles/awesome/imageset/en/icon_post_quote.gif" alt="Reply with quote" title="Reply with quote"></a> &nbsp;</div></td>
+
+                                </tr>
+                                <tr style="height: 4px">
+                                    <td class="spacer" colspan="2">
+                                        <img src="http://www.awesomenauts.com/forum//styles/awesome/theme/images/spacer.gif" width="1" height="4" alt="">
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                            <div class="tbl-f-l">
+                                <div class="tbl-f-r">
+                                    <div class="tbl-f-c">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
