@@ -75,7 +75,7 @@
 
                                     <td class="row-post-top" align="center" valign="middle">
                                         <a name="p359213"></a>
-                                        <b class="postauthor">{{ post.username }}</b>
+                                        <b class="postauthor">{{ post[0]|safe }}</b>
                                     </td>
                                     <td class="row-post-top" width="100%">
                                         <table width="100%" cellspacing="0">
@@ -110,7 +110,7 @@
 
                                                     <div class="postbody"
                                                          style="max-width: 764px; word-wrap: break-word;">
-                                                        {{ post.text }}
+                                                        {{ post[1]|safe }}
                                                     </div>
                                                 </td>
                                             </tr>

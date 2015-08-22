@@ -1,25 +1,28 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Integer, String, ForeignKey
 
-engine = create_engine('sqlite:///simulator.db', echo=False)
-Session = sessionmaker(bind=engine)
-session = Session()
+db = SQLAlchemy()
 
-Base = declarative_base()
-
-class User(Base):
+class User(db.Model):
+    """
+    Contains all users.
+    We separate users from posts so we can fetch a user at random.
+    id is obviously not the forum user id
+    """
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String)
+    chain = None
 
 
-class Post(Base):
+class Post(db.Model):
+    """
+    Separate post from each user.
+    We don't use the post number atm, but we might in the future.
+    """
     __tablename__ = 'post'
-    thread_id = Column(Integer, primary_key=True)
-    number = Column(Integer, primary_key=True)
-    user_id = Column(Integer)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    thread_id = Column(Integer)
+    number = Column(Integer)
+    user_id = Column(Integer, ForeignKey('user.id'))
     content = Column(String)
-
-Base.metadata.create_all(engine)
