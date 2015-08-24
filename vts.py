@@ -15,8 +15,9 @@ class Simulator(object):
         simulator.inserthreads()
         print(simulator.getparagraph()
 
-    You don't need to call the insert threads method every time. Just once to insert post data into the db.
+    You don't need to call the insert threads method every time. Just once to populate the db with post data.
     """
+
     # Vault thread ids.
     threads = [27287,  # 2.3
                29231,  # 2.4
@@ -50,7 +51,7 @@ class Simulator(object):
             page = 1
             while self.insertposts(thread, page):
                 page += 1
-        self.fetchusers()
+        self.fetchusers()  # make sure our class instance has an up-to-date user list
 
     def insertposts(self, threadid, page=1):
         """
@@ -91,7 +92,7 @@ class Simulator(object):
                 a = models.User()
                 a.username = author.text
                 self.db.add(a)
-                self.db.flush()
+                self.db.flush()  # we need to flush to the db to get the id field populated
                 self.authorids[author.text] = a.id
 
         nr_posts = len(posts)
@@ -111,6 +112,8 @@ class Simulator(object):
     def parsequote(self, post):
         """
         Parses and inserts quotes on a post for a specific user.
+        The quote is replaced with a placeholder text with the quoted userid attached.
+        Later we replace this placeholder text with a random paragraph from that user.
         """
         quoteauthors = post.find_all('div', class_="quotetitle")
         quotecontent = post.find_all('div', class_="quotecontent")
@@ -144,7 +147,7 @@ class Simulator(object):
 
     def generatechain(self, user):
         """
-        Will generate a markov chain for the user.
+        Generates a markov chain for the user.
         """
 
         if user.chain is not None:
@@ -156,7 +159,7 @@ class Simulator(object):
         userposts = [post.content or '' for post in posts]
         text = " ".join(userposts)
         try:
-            user.chain = markovify.Text(text)
+            user.chain = markovify.Text(text, state_size=1)
         except IndexError:
             # TODO We should validate input, maybe in the list comprehension filter above?
             print("FIXME: validate input {}".format(user.username).encode("UTF-8"))
@@ -189,15 +192,16 @@ class Simulator(object):
                 paragraphtext = 'Zork.'
         return user.username, self.insertquoteparagraph(paragraphtext)
 
-    def getparagraphlist(self, amount = 1, userid = 0):
+    def getparagraphlist(self, amount=10, userid=0):
         """
         return a list of paragraphs
         """
-        posts = []
+
+        paragraphs = []
         for _ in range(amount):
-            post = self.getparagraph(userid=userid)
-            posts.append(post)
-        return posts
+            paragraph = self.getparagraph(userid=userid)
+            paragraphs.append(paragraph)
+        return paragraphs
 
     def insertquoteparagraph(self, paragraphtext):
         """
