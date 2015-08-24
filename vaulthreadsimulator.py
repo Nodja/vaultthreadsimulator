@@ -24,5 +24,6 @@ def user(name):
         userid = user[0].id
         posts = simulator.getparagraphlist(amount=10, userid=userid)
     return render_template('index.html', posts=posts)
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8010, debug=True)
