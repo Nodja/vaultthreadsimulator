@@ -189,13 +189,13 @@ class Simulator(object):
                 paragraphtext = 'Zork.'
         return user.username, self.insertquoteparagraph(paragraphtext)
 
-    def getparagraphlist(self, amount=1):
+    def getparagraphlist(self, amount = 1, userid = 0):
         """
         return a list of paragraphs
         """
         posts = []
         for _ in range(amount):
-            post = self.getparagraph()
+            post = self.getparagraph(userid=userid)
             posts.append(post)
         return posts
 
